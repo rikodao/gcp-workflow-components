@@ -1,0 +1,18 @@
+{
+  "name": "send-slack-notification",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "gcloud builds submit . --substitutions=_SERVICE_NAME=hoge",
+    "deployGCF": "gcloud functions deploy run-cloudbuild-trigger --runtime=node10  --trigger-topic=TRIGGER_TOPIC",
+    "deployRun": "gcloud run deploy SERVICE-NAME --image gcr.io/$PROJECT_ID/$_SERVICE_NAME --region asia-northeast1 --platform managed",
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "@slack/webhook": "^5.0.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

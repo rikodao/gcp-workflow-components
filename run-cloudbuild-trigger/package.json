@@ -1,0 +1,19 @@
+{
+  "name": "run-cloudbuild-trigger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "gcloud builds submit . --substitutions=_SERVICE_NAME=hoge",
+    "deployGCF": "gcloud functions deploy run-cloudbuild-trigger --runtime=node10  --trigger-topic=TRIGGER_TOPIC",
+    "deployRun": "gcloud run deploy SERVICE-NAME --image gcr.io/$PROJECT_ID/$_SERVICE_NAME --region asia-northeast1 --platform managed",
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^0.18.0",
+    "googleapis": "^52.1.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
